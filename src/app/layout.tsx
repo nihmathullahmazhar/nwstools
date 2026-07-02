@@ -68,6 +68,28 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="flex min-h-full flex-col font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  name: SITE_NAME,
+                  url: SITE_URL,
+                  description: SITE_DESCRIPTION,
+                },
+                {
+                  "@type": "Organization",
+                  name: SITE_NAME,
+                  url: SITE_URL,
+                  logo: `${SITE_URL}/icon`,
+                },
+              ],
+            }),
+          }}
+        />
         <ServiceWorkerRegister />
         <TopBanner />
         <Header />
